@@ -260,8 +260,8 @@ action :create do
         }
 
         # TODO: Rework this to call the API directly, so we don't have delivery-cli formatting things.
-        runner = Mixlib::ShellOut.new("delivery --non-interactive --no-color \
-          api post runners \
+        runner = Mixlib::ShellOut.new("delivery api post runners \
+          --non-interactive --no-color \
           -d '#{data.to_json}' \
           -s #{new_resource.automate_fqdn} \
           -e #{new_resource.automate_enterprise} \
