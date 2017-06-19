@@ -46,7 +46,7 @@ action :create do
   password = (property_is_set?(:password) ? new_resource.password : SecureRandom.base64(36))
 
   execute "create-user-#{new_resource.username}" do
-    sensitive true
+    #sensitive true
     retries 3
     command "chef-server-ctl user-create #{new_resource.username} #{new_resource.first_name} #{new_resource.last_name} #{new_resource.email} #{password} -f #{key}"
     not_if { node.run_state['chef-users'].index(/^#{new_resource.username}$/) }
