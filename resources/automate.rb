@@ -43,11 +43,11 @@ end
 
 action :create do
   # Always make sure user and key provided to resource is at the bottom of the config, overriding duplicates.
-  new_resource.config << "\ndelivery['chef_username'] = '#{new_resource.chef_user}'"
-  new_resource.config << "\ndelivery['chef_private_key'] = '/etc/delivery/#{new_resource.chef_user}.pem'"
+  new_resource.config += "\ndelivery['chef_username'] = '#{new_resource.chef_user}'"
+  new_resource.config += "\ndelivery['chef_private_key'] = '/etc/delivery/#{new_resource.chef_user}.pem'"
 
   # Hardcode v1 runner search to automate-build-node
-  new_resource.config << "\ndelivery['default_search'] = 'tags:delivery-build-node'"
+  new_resource.config += "\ndelivery['default_search'] = 'tags:delivery-build-node'"
 
   chef_ingredient 'automate' do
     action :upgrade
