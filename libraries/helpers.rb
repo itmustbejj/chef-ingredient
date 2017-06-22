@@ -328,7 +328,7 @@ module ChefIngredientCookbook
         if config =~ /^ *#{v}.*$/
           config.sub(/^ *#{v}.*$/, "#{k} #{str}")
         else
-          config << "\n#{k} #{str}"
+          config += "\n#{k} #{str}"
         end
       end
       config
